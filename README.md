@@ -1,4 +1,4 @@
-````markdown
+
 # OpenAI API Quickstart - Python
 
 Este repositorio contiene múltiples aplicaciones de inicio rápido para diferentes endpoints de la API de OpenAI (chat, asistentes, etc.). Consulta la carpeta `examples` para probar distintos ejemplos y comenzar a utilizar la API de OpenAI.
