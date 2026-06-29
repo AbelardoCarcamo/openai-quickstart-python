@@ -1,156 +1,130 @@
-# Chatbot con la API de OpenAI en Python
+````markdown
+# OpenAI API Quickstart - Python
 
-## Descripción
+Este repositorio contiene múltiples aplicaciones de inicio rápido para diferentes endpoints de la API de OpenAI (chat, asistentes, etc.). Consulta la carpeta `examples` para probar distintos ejemplos y comenzar a utilizar la API de OpenAI.
 
-Este proyecto consiste en la implementación de un chatbot utilizando la API de OpenAI y Python, siguiendo la estructura y funcionamiento del repositorio oficial **OpenAI Quickstart Python**.
+## Autor
 
-El objetivo es comprender el funcionamiento de la API, la arquitectura de un chatbot, el manejo del historial de conversación, el uso de Flask para aplicaciones web y la integración con modelos de lenguaje.
+**Abelardo Carcamo**
 
-Este proyecto ha sido desarrollado con fines académicos para la asignatura correspondiente de la Licenciatura en Ciberseguridad.
+Estudiante de Licenciatura en Ciberseguridad
 
----
+Universidad Tecnológica de Panamá (UTP)
 
-# Objetivos
-
-## Objetivo General
-
-Replicar el funcionamiento del repositorio oficial **OpenAI Quickstart Python**, comprendiendo cada uno de sus componentes y el proceso completo de comunicación entre la aplicación y la API de OpenAI.
-
-## Objetivos Específicos
-
-- Configurar correctamente el entorno de desarrollo.
-- Comprender la estructura del proyecto.
-- Implementar un chatbot utilizando la API de OpenAI.
-- Comprender el funcionamiento del historial de conversación.
-- Implementar transmisión de respuestas (Streaming).
-- Comprender el uso de Function Calling.
-- Analizar el funcionamiento de Flask como servidor web.
+Grupo: **1S3232**
 
 ---
 
-# Tecnologías utilizadas
+## Solicitud básica
 
-- Python
-- Flask
-- OpenAI API
-- HTML5
-- CSS3
-- JavaScript
-- Git
-- GitHub
+Para enviar tu primera solicitud a la API utilizando el SDK de OpenAI para Python, asegúrate de tener instaladas las dependencias necesarias y luego ejecuta el siguiente código:
 
----
+```python
+from openai import OpenAI
 
-# Requisitos
+client = OpenAI()
 
-- Python 3.10 o superior
-- Cuenta en OpenAI
-- API Key válida
-- Git
+completion = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ]
+)
 
----
-
-# Instalación
-
-## 1. Clonar el repositorio
-
-```bash
-git clone <URL_DEL_REPOSITORIO>
+print(completion.choices[0].message)
 ```
 
-## 2. Ingresar al proyecto
+## Configuración
+
+1. Si no tienes Python instalado, descárgalo e instálalo desde **Python.org**.
+
+2. Clona este repositorio.
+
+3. Navega al directorio del proyecto:
 
 ```bash
 cd openai-quickstart-python
 ```
 
-## 3. Crear un entorno virtual
+4. Crea un nuevo entorno virtual.
+
+### macOS
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
 ### Windows
 
-```powershell
+```cmd
 python -m venv venv
 .\venv\Scripts\activate
 ```
 
-### Linux / macOS
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-## 4. Instalar las dependencias
+5. Instala las dependencias del proyecto:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 5. Configurar la API Key
+6. Crea una copia del archivo de variables de entorno de ejemplo:
 
-Crear un archivo llamado
-
-```
-.env
-```
-
-con el siguiente contenido:
-
-```env
-OPENAI_API_KEY=TU_API_KEY
-```
-
----
-
-# Estructura del proyecto
-
-```
-openai-quickstart-python
-│
-├── examples
-│   ├── assistant-basic
-│   ├── assistant-flask
-│   ├── assistant-functions
-│   └── chat-basic
-│
-├── .env.example
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
-
----
-
-# Ejecución
-
-Cada ejemplo puede ejecutarse de forma independiente.
-
-Ejemplo:
+### Linux / macOS
 
 ```bash
-python app.py
+cp .env.example .env
 ```
 
-o
+### Windows (PowerShell)
+
+```powershell
+Copy-Item .env.example .env
+```
+
+7. Agrega tu clave de API de OpenAI al archivo `.env` recién creado.
+
+```text
+OPENAI_API_KEY=tu_api_key
+```
+
+8. Ejecuta la aplicación.
+
+Este paso depende del ejemplo que desees ejecutar.
+
+Si el ejemplo utiliza Flask (como `chat-basic`), puedes iniciarlo con:
 
 ```bash
 flask run
 ```
 
-dependiendo del ejemplo seleccionado.
+o directamente con:
 
----
+```bash
+python examples/chat-basic/app.py
+```
 
-# Autor
+Una vez iniciado, podrás acceder a la aplicación desde tu navegador en:
 
-**Chester Ivan Ferrer Hernandez**
+```
+http://localhost:5000
+```
 
-Estudiante de Licenciatura en Ciberseguridad
+Si el ejemplo corresponde a un script de Python sin Flask, simplemente ejecútalo con:
 
-Grupo **1S3232**
+```bash
+python nombre_del_archivo.py
+```
 
----
+## Ejemplos incluidos
 
-# Créditos
+La carpeta `examples` contiene diferentes ejemplos para aprender a utilizar la API de OpenAI:
 
-Este proyecto se basa en el repositorio oficial **OpenAI Quickstart Python**, utilizado exclusivamente con fines educativos y académicos.
+- **chat-basic** — Aplicación básica de chat utilizando Flask.
+- **assistant-basic** — Ejemplo básico del uso de asistentes.
+- **assistant-functions** — Ejemplo del uso de Function Calling.
+- **assistant-flask** — Interfaz web para interactuar con asistentes mediante Flask.
+
+Estos ejemplos sirven como punto de partida para comprender el funcionamiento del SDK de OpenAI y desarrollar aplicaciones propias.
+````
